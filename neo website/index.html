@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070d" />
+  <meta name="description" content="NEO GAMING — elite gaming laptops, consoles, custom rigs and peripherals. Build beyond the frame." />
+  <meta property="og:title" content="NEO GAMING — Build Beyond The Frame" />
+  <meta property="og:description" content="Elite gaming hardware, live FPS-tuned rigs and limited loot drops. Enter the armory." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>NEO GAMING — Build Beyond The Frame</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    try {
+      var __hxTheme = JSON.parse(localStorage.getItem("hx_theme") || '"dark"');
+      if (__hxTheme === "light") document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__mesh"></div>
+    <div class="ambient__grid"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="ambient__scanlines"></div>
+    <div class="ambient__vignette"></div>
+  </div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 10.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M18.5 5.5a9 9 0 0 1 0 13"></path></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="m16 9 5 6M21 9l-5 6"></path></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"></path></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"></path></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"></path></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"></path></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.3l7.7-7.8 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z"></path></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><path d="M4 14h3v6H5a1 1 0 0 1-1-1zM20 14h-3v6h2a1 1 0 0 0 1-1z"></path></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"></path></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.7 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.7a2 2 0 0 0-3.4 0Z"></path><path d="M12 9v4M12 17h.01"></path></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"></path></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6"></path></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"></rect><rect x="9" y="9" width="6" height="6" rx="1"></rect><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"></path></symbol>
+    <symbol id="i-gpu" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="2"></rect><circle cx="8" cy="12.5" r="2.2"></circle><circle cx="16" cy="12.5" r="2.2"></circle><path d="M5 18v3M19 18v3M5 7V5h4v2"></path></symbol>
+    <symbol id="i-memory" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="1.5"></rect><path d="M6 10v4M9 10v4M15 10v4M18 10v4M5 17v3M9 17v3M15 17v3M19 17v3"></path></symbol>
+    <symbol id="i-storage" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 4v7h10V4M8 15h.01M12 15h.01M16 15h.01M7 18h10"></path></symbol>
+    <symbol id="i-psu" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="15.5" cy="12" r="3.5"></circle><path d="m13.8 10.5 1.4 1.5-1.4 1.5M6 10h4M6 14h4"></path></symbol>
+    <symbol id="i-case" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M9 6h6M9 9h6M9 15h6M9 18h6"></path></symbol>
+    <symbol id="i-cooler" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 3c3 2 4 5 3 7M21 12c-2 3-5 4-7 3M12 21c-3-2-4-5-3-7M3 12c2-3 5-4 7-3"></path></symbol>
+    <symbol id="i-motherboard" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><rect x="7" y="7" width="6" height="6" rx="1"></rect><path d="M16 7h1M16 10h1M7 16h10M7 19h6"></path></symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7 8h10a5 5 0 0 1 4.8 6.4l-.8 3a2.7 2.7 0 0 1-4.6 1.1L14.5 16h-5l-1.9 2.5a2.7 2.7 0 0 1-4.6-1.1l-.8-3A5 5 0 0 1 7 8Z"></path><path d="M7 11v4M5 13h4M16 12h.01M18 14h.01"></path></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="11" rx="1.5"></rect><path d="M2 19h20l-2-4H4z"></path></symbol>
+    <symbol id="i-vr" viewBox="0 0 24 24"><path d="M4 7h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4l-2-3h-4l-2 3H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"></path><circle cx="8" cy="12" r="2.2"></circle><circle cx="16" cy="12" r="2.2"></circle></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 15h10"></path></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"></path></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"></path></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"></path></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.7"></path><path d="M20 4v7h-7"></path></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V4H4v12h4"></path></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m3 6 9 7 9-7"></path></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24"><path d="M8.5 6.2A16 16 0 0 0 4 8c-2 3.3-2.5 7.8-1.4 12 2 1.5 4.6 2.4 7.4 2.5l1.2-1.7c-1.5-.4-2.8-1-3.9-1.8l.8-.6c3 1.4 6.6 1.4 9.6 0l.8.6c-1.1.8-2.4 1.4-3.9 1.8l1.2 1.7c2.8-.1 5.4-1 7.4-2.5 1.1-4.2.6-8.7-1.4-12a16 16 0 0 0-4.5-1.8L16.2 7a13 13 0 0 0-8.4 0z"></path><circle cx="9" cy="14" r="1.4"></circle><circle cx="15" cy="14" r="1.4"></circle></symbol>
+    <symbol id="i-twitch" viewBox="0 0 24 24"><path d="M4 3h16v12l-5 5h-4l-3 3H5v-3H2V6z"></path><path d="M8 7v6M16 7v6"></path></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="m10 9 5 3-5 3z"></path></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.5 6.5h.01"></path></symbol>
+    <symbol id="i-x-social" viewBox="0 0 24 24"><path d="M4 3h4.5l4.2 5.8L17.5 3H21l-6.7 8L21.5 21H17l-4.5-6.3L7 21H3.5l7-8.3z"></path></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 20 5v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5z"></path><path d="m8.5 12 2.3 2.3 4.7-4.8"></path></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M1 5h14v12H1zM15 9h4l4 4v4h-8"></path><circle cx="6" cy="19" r="2"></circle><circle cx="18" cy="19" r="2"></circle></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 2c2 4-1 5 1 8 1-2 2-3 3-3 2 2 3 5 3 8a7 7 0 0 1-14 0c0-4 3-7 7-13Z"></path><path d="M12 15c1.5 1.5 2 3 1 4.5"></path></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8zM5 2l.8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8z"></path></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 6.5a4.5 4.5 0 0 0-6 5.5L3 17.5 6.5 21l5.5-5.5a4.5 4.5 0 0 0 5.5-6L14 13l-3-3z"></path></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 13 8-13 8z"></path></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8.5a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0M8.5 15.5a6 6 0 0 1 7 0"></path><circle cx="12" cy="19" r="1"></circle></symbol>
+  </svg>
+
+  <header class="site-header" id="siteHeader">
+    <div class="announcement">
+      <div class="announcement__track" id="announcementTrack">
+        <span><i class="status-dot"></i> NEXT-DAY DROP ACTIVE</span>
+        <span class="announcement__divider">//</span>
+        <span>FREE SHIPPING OVER $99</span>
+        <span class="announcement__divider">//</span>
+        <span>RESISTANCE MEMBERS GET +5% LOOT</span>
+        <span class="announcement__divider">//</span>
+        <span>NEW DROP: RTX 50 SERIES RIGS ONLINE</span>
+        <span class="announcement__divider">//</span>
+        <span>FREE SHIPPING OVER $99</span>
+        <span class="announcement__divider">//</span>
+        <span>RESISTANCE MEMBERS GET +5% LOOT</span>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="brand brand--neo" href="#top" aria-label="Neo Gaming home">
+        <span class="brand__logo-wrap">
+          <img class="brand__logo brand__logo--dark" src="assets/neo-logo.png" alt="" />
+          <img class="brand__logo brand__logo--light" src="assets/neo-logo-light.png" alt="" />
+          <i class="brand__status" aria-hidden="true"></i>
+        </span>
+      </a>
+
+      <div class="nav__links" id="desktopNav">
+        <a class="nav__link is-active" href="#shop" data-scroll="shop">ARMORY</a>
+        <a class="nav__link" href="#builder" data-scroll="builder">RIG FORGE</a>
+        <a class="nav__link nav__link--hot" href="#drops" data-scroll="drops"><span class="live-pip"></span>LOOT DROP</a>
+        <a class="nav__link" href="#support" data-scroll="support">SUPPORT</a>
+      </div>
+
+      <div class="nav__actions">
+        <button class="search-trigger" id="searchTrigger" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">
+          <svg class="icon"><use href="#i-search"></use></svg>
+          <span class="search-trigger__label">Search the armory</span>
+          <span class="keycap">CTRL</span><span class="keycap">K</span>
+        </button>
+
+        <button class="icon-btn sound-btn" id="soundToggle" type="button" aria-label="Mute sound effects" aria-pressed="true" data-tooltip="SFX ON">
+          <svg class="icon icon-volume"><use href="#i-volume"></use></svg>
+          <svg class="icon icon-mute"><use href="#i-mute"></use></svg>
+          <span class="sound-wave" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+
+        <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Activate RGB light theme" aria-pressed="false" data-tooltip="RGB LIGHT">
+          <svg class="icon theme-icon theme-icon--moon"><use href="#i-moon"></use></svg>
+          <svg class="icon theme-icon theme-icon--sun"><use href="#i-sun"></use></svg>
+        </button>
+
+        <button class="icon-btn profile-btn" id="profileTrigger" type="button" aria-label="Open operator portal" aria-haspopup="dialog" aria-controls="profileModal" data-tooltip="OPERATOR LOGIN">
+          <svg class="icon"><use href="#i-user"></use></svg>
+          <span class="profile-btn__light" aria-hidden="true"></span>
+        </button>
+
+        <button class="cart-trigger" id="cartTrigger" type="button" aria-haspopup="dialog" aria-controls="cartDrawer" aria-label="Open cart, 0 items">
+          <span class="cart-trigger__icon">
+            <svg class="icon"><use href="#i-cart"></use></svg>
+            <span class="cart-badge" id="cartCount" aria-live="polite">0</span>
+          </span>
+          <span class="cart-trigger__text"><small>CART</small><strong id="cartTotalNav">$0.00</strong></span>
+        </button>
+
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <svg class="icon"><use href="#i-menu"></use></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="nav-progress" id="navProgress"></div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-menu__head">
+      <span class="mono-label">NAV // SECTOR 01</span>
+      <button class="icon-btn" id="mobileClose" type="button" aria-label="Close menu"><svg class="icon"><use href="#i-x"></use></svg></button>
+    </div>
+    <div class="mobile-menu__links">
+      <a href="#shop" data-scroll="shop"><span>01</span>ARMORY<svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
+      <a href="#builder" data-scroll="builder"><span>02</span>RIG FORGE<svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
+      <a href="#drops" data-scroll="drops"><span>03</span>LOOT DROP<svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
+      <a href="#support" data-scroll="support"><span>04</span>SUPPORT<svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
+    </div>
+    <div class="mobile-menu__meta">
+      <span><i class="status-dot"></i> SERVERS ONLINE</span>
+      <span>24/7 OPERATOR SUPPORT</span>
+    </div>
+    <button class="btn btn--primary btn--full" id="mobileSearchTrigger" type="button"><svg class="icon"><use href="#i-search"></use></svg> SEARCH THE ARMORY</button>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__noise" aria-hidden="true">NG</div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="eyebrow reveal" data-reveal>
+            <span class="eyebrow__line"></span>
+            <span>NEO DROP 04</span>
+            <span class="eyebrow__chip"><i class="live-pip"></i> LIVE</span>
+          </div>
+          <h1 class="hero__title reveal" data-reveal style="--delay:.05s">
+            BUILD BEYOND<br />
+            <span class="text-gradient">THE FRAME.</span>
+          </h1>
+          <p class="hero__lead reveal" data-reveal style="--delay:.1s">
+            Elite hardware for players who refuse to lag. Hand-tested battle stations, zero-compromise components, and drops that never restock twice.
+          </p>
+          <div class="hero__actions reveal" data-reveal style="--delay:.15s">
+            <a class="btn btn--primary btn--lg" href="#builder" data-scroll="builder" data-magnetic>
+              <span>EXPLORE BATTLE STATIONS</span>
+              <svg class="icon"><use href="#i-arrow-right"></use></svg>
+            </a>
+            <button class="btn btn--ghost btn--lg" id="dailyLootBtn" type="button" data-magnetic>
+              <svg class="icon"><use href="#i-sparkles"></use></svg>
+              <span>CLAIM DAILY LOOT</span>
+            </button>
+          </div>
+          <div class="hero__stats reveal" data-reveal style="--delay:.2s">
+            <div class="hero-stat">
+              <strong data-count="4.9" data-decimals="1">4.9</strong><span class="hero-stat__unit">/5</span>
+              <p><span class="stars stars--sm" aria-hidden="true">★★★★★</span> 12.4K verified reviews</p>
+            </div>
+            <div class="hero-stat">
+              <strong data-count="48">48</strong><span class="hero-stat__unit">H</span>
+              <p>Average dispatch time</p>
+            </div>
+            <div class="hero-stat">
+              <strong data-count="2">2</strong><span class="hero-stat__unit">YR</span>
+              <p>Zero-dead-pixel cover</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__stage-wrap reveal" data-reveal style="--delay:.15s">
+          <div class="stage-hud">
+            <span class="stage-hud__label">LIVE LOADOUT // 04</span>
+            <div class="stage-hud__right">
+              <span class="stage-hud__code">NG-<b id="heroSlideCode">001</b></span>
+              <span class="stage-hud__signal"><i></i><i></i><i></i><i></i></span>
+            </div>
+          </div>
+          <div class="hero__stage" id="heroStage">
+            <div class="stage-grid" aria-hidden="true"></div>
+            <div class="stage-orbit stage-orbit--one" aria-hidden="true"></div>
+            <div class="stage-orbit stage-orbit--two" aria-hidden="true"></div>
+            <div class="stage-crosshair" aria-hidden="true"><i></i><i></i></div>
+            <div class="stage-glow" aria-hidden="true"></div>
+            <div class="hero-slides" id="heroSlides"></div>
+            <div class="float-chip float-chip--fps" aria-hidden="true">
+              <span class="float-chip__icon"><svg class="icon"><use href="#i-bolt"></use></svg></span>
+              <span><b id="heroFps">240</b><small>FPS / MAX</small></span>
+              <i class="meter"><i style="width:86%"></i></i>
+            </div>
+            <div class="float-chip float-chip--ping" aria-hidden="true">
+              <span class="status-dot"></span>
+              <span><b>0.3ms</b><small>RESPONSE</small></span>
+            </div>
+            <div class="stage-controls">
+              <button class="stage-arrow" id="heroPrev" type="button" aria-label="Previous product"><svg class="icon"><use href="#i-chevron-left"></use></svg></button>
+              <div class="stage-progress" id="heroDots" role="tablist" aria-label="Hero products"></div>
+              <button class="stage-arrow" id="heroNext" type="button" aria-label="Next product"><svg class="icon"><use href="#i-chevron-right"></use></svg></button>
+            </div>
+            <div class="slide-readout">
+              <span class="slide-readout__index"><b id="heroIndex">01</b> / <span id="heroTotal">03</span></span>
+              <span class="slide-readout__name" id="heroName">ASUS ROG STRIX SCAR 18</span>
+            </div>
+          </div>
+          <div class="stage-ticker" aria-hidden="true">
+            <span>RTX 5090</span><i></i><span>240HZ OLED</span><i></i><span>2.5K</span><i></i><span>DDR5</span><i></i><span>ZERO BOTTLENECK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-rail">
+        <span class="brand-rail__label">AUTHORIZED DROP PARTNERS</span>
+        <div class="brand-rail__items">
+          <span>ASUS ROG</span><span>RAZER</span><span>NVIDIA</span><span>ALIENWARE</span><span>CORSAIR</span><span>SONY</span><span>XBOX</span><span>SAMSUNG</span>
+        </div>
+        <span class="brand-rail__scroll">SCROLL TO DEPLOY <svg class="icon"><use href="#i-chevron-down"></use></svg></span>
+      </div>
+    </section>
+
+    <section class="section categories" id="categories">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow__line"></span><span>01 // CHOOSE YOUR CLASS</span></div>
+            <h2 class="section-title">ENTER THE <span class="text-gradient text-gradient--pink">ARMORY</span></h2>
+          </div>
+          <p class="section-head__copy">Five combat classes. One standard: absolutely no weak links. Select a sector to filter the drop.</p>
+        </header>
+
+        <div class="category-grid">
+          <button class="category-card category-card--large" type="button" data-category="Laptops" data-art="laptop" style="--accent:var(--cyan);--accent-rgb:0,240,255;">
+            <span class="category-card__bg" data-category-art></span>
+            <span class="category-card__top"><span class="category-card__num">01</span><span class="category-card__status"><i class="status-dot"></i> 24 UNITS</span></span>
+            <span class="category-card__content">
+              <span class="category-card__icon"><svg class="icon"><use href="#i-laptop"></use></svg></span>
+              <strong>GAMING<br />LAPTOPS</strong>
+              <small>Desktop-class power. Carry-on annihilation.</small>
+              <span class="category-card__cta">EXPLORE SECTOR <svg class="icon"><use href="#i-arrow-up-right"></use></svg></span>
+            </span>
+          </button>
+
+          <button class="category-card" type="button" data-category="Consoles" data-art="console" style="--accent:var(--pink);--accent-rgb:255,0,122;">
+            <span class="category-card__bg" data-category-art></span>
+            <span class="category-card__top"><span class="category-card__num">02</span><span class="category-card__status"><i class="status-dot"></i> 12 UNITS</span></span>
+            <span class="category-card__content">
+              <span class="category-card__icon"><svg class="icon"><use href="#i-gamepad"></use></svg></span>
+              <strong>CONSOLES</strong>
+              <small>PS5 Pro · Xbox Series X</small>
+              <span class="category-card__cta">EXPLORE <svg class="icon"><use href="#i-arrow-up-right"></use></svg></span>
+            </span>
+          </button>
+
+          <button class="category-card" type="button" data-category="Components" data-art="gpu" style="--accent:var(--green);--accent-rgb:0,255,102;">
+            <span class="category-card__bg" data-category-art></span>
+            <span class="category-card__top"><span class="category-card__num">03</span><span class="category-card__status"><i class="status-dot"></i> 68 UNITS</span></span>
+            <span class="category-card__content">
+              <span class="category-card__icon"><svg class="icon"><use href="#i-gpu"></use></svg></span>
+              <strong>CUSTOM RIG<br />COMPONENTS</strong>
+              <small>RTX 50 · Ryzen 9000 · DDR5</small>
+              <span class="category-card__cta">EXPLORE <svg class="icon"><use href="#i-arrow-up-right"></use></svg></span>
+            </span>
+          </button>
+
+          <button class="category-card" type="button" data-category="Peripherals" data-art="keyboard" style="--accent:var(--purple);--accent-rgb:168,85,247;">
+            <span class="category-card__bg" data-category-art></span>
+            <span class="category-card__top"><span class="category-card__num">04</span><span class="category-card__status"><i class="status-dot"></i> 42 UNITS</span></span>
+            <span class="category-card__content">
+              <span class="category-card__icon"><svg class="icon"><use href="#i-keyboard"></use></svg></span>
+              <strong>PERIPHERALS</strong>
+              <small>Keyboards · Mice · Audio</small>
+              <span class="category-card__cta">EXPLORE <svg class="icon"><use href="#i-arrow-up-right"></use></svg></span>
+            </span>
+          </button>
+
+          <button class="category-card category-card--wide" type="button" data-category="VR &amp; Streaming" data-art="vr" style="--accent:#39ffb0;--accent-rgb:57,255,176;">
+            <span class="category-card__bg" data-category-art></span>
+            <span class="category-card__top"><span class="category-card__num">05</span><span class="category-card__status"><i class="status-dot"></i> 18 UNITS</span></span>
+            <span class="category-card__content">
+              <span class="category-card__icon"><svg class="icon"><use href="#i-vr"></use></svg></span>
+              <strong>VR &amp; STREAMING</strong>
+              <small>Step inside. Broadcast outside.</small>
+              <span class="category-card__cta">EXPLORE SECTOR <svg class="icon"><use href="#i-arrow-up-right"></use></svg></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section armory" id="shop">
+      <div class="container">
+        <header class="section-head section-head--armory">
+          <div>
+            <div class="eyebrow"><span class="eyebrow__line"></span><span>02 // LIVE INVENTORY</span></div>
+            <h2 class="section-title">THE <span class="text-gradient">ARMORY</span></h2>
+          </div>
+          <div class="armory-meta">
+            <div class="armory-meta__item"><span>IN STOCK</span><strong id="inStockCount">164</strong></div>
+            <div class="armory-meta__item"><span>DROP RATING</span><strong id="dropRating">4.9<small>/5</small></strong></div>
+            <div class="armory-meta__item armory-meta__item--live"><i class="live-pip"></i><span>12 OPERATORS<br />SHOPPING NOW</span></div>
+          </div>
+        </header>
+
+        <div class="armory-toolbar">
+          <div class="filter-tabs" role="group" aria-label="Filter by category">
+            <button class="filter-tab is-active" type="button" data-filter="All">ALL GEAR <span>10</span></button>
+            <button class="filter-tab" type="button" data-filter="Laptops">LAPTOPS <span>2</span></button>
+            <button class="filter-tab" type="button" data-filter="Consoles">CONSOLES <span>2</span></button>
+            <button class="filter-tab" type="button" data-filter="Components">COMPONENTS <span>2</span></button>
+            <button class="filter-tab" type="button" data-filter="Peripherals">PERIPHERALS <span>3</span></button>
+            <button class="filter-tab" type="button" data-filter="VR &amp; Streaming">VR + STREAM <span>1</span></button>
+          </div>
+          <div class="toolbar-controls">
+            <label class="price-control" for="priceRange">
+              <span class="price-control__label">MAX PRICE <output id="priceOutput">$3,500</output></span>
+              <span class="range-wrap">
+                <input type="range" id="priceRange" min="0" max="3500" step="50" value="3500" aria-label="Maximum price" />
+                <span class="range-fill" id="rangeFill"></span>
+              </span>
+            </label>
+            <label class="select-control">
+              <span class="sr-only">Sort products</span>
+              <select id="sortSelect">
+                <option value="featured">SORT: FEATURED</option>
+                <option value="price-asc">PRICE: LOW → HIGH</option>
+                <option value="price-desc">PRICE: HIGH → LOW</option>
+                <option value="rating">TOP RATED</option>
+              </select>
+              <svg class="icon"><use href="#i-chevron-down"></use></svg>
+            </label>
+          </div>
+        </div>
+
+        <div class="results-bar">
+          <p><span id="resultCount">10</span> LOADOUTS MATCHED <span class="results-bar__spark">✦</span> <span class="results-bar__hint">Hover for specs · Quick-add without leaving the grid</span></p>
+          <span class="results-bar__code">GRID // <b id="gridCode">NG-A01</b></span>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+
+        <div class="empty-state" id="noResults" hidden>
+          <span class="empty-state__icon"><svg class="icon"><use href="#i-search"></use></svg></span>
+          <h3>NO SIGNAL IN THIS SECTOR</h3>
+          <p>Adjust your price ceiling or clear the active filter to reacquire the drop.</p>
+          <button class="btn btn--primary" id="resetFilters" type="button">RESET FILTERS</button>
+        </div>
+
+        <div class="armory-foot">
+          <div class="armory-foot__line"></div>
+          <p>Every unit ships bench-tested and thermal-profiled.</p>
+          <button class="link-btn" id="expandCatalog" type="button">REQUEST THE FULL CATALOG <svg class="icon"><use href="#i-arrow-up-right"></use></svg></button>
+          <div class="armory-foot__line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rig-section" id="builder">
+      <div class="rig-section__beam" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head section-head--rig">
+          <div>
+            <div class="eyebrow"><span class="eyebrow__line"></span><span>03 // RIG FORGE</span></div>
+            <h2 class="section-title">FORGE YOUR<br /><span class="text-gradient text-gradient--green">NEXT MACHINE.</span></h2>
+            <p class="section-head__copy section-head__copy--left">Pick your parts. We validate every socket, clearance and watt before you drop a credit. Estimated FPS is recalculated live.</p>
+          </div>
+          <div class="preset-wrap">
+            <span class="mono-label">QUICK DEPLOY PRESETS</span>
+            <div class="preset-row" role="group" aria-label="Build presets">
+              <button class="preset" type="button" data-preset="starter"><span>01</span><strong>STARTER</strong><small>1080p</small></button>
+              <button class="preset is-active" type="button" data-preset="apex"><span>02</span><strong>APEX</strong><small>1440p</small></button>
+              <button class="preset" type="button" data-preset="nova"><span>03</span><strong>NOVA</strong><small>4K</small></button>
+            </div>
+          </div>
+        </header>
+
+        <div class="rig-layout">
+          <div class="rig-main">
+            <div class="parts-toolbar">
+              <div class="parts-search">
+                <svg class="icon"><use href="#i-search"></use></svg>
+                <input type="search" id="partSearch" placeholder="Search components, brands, chipsets…" autocomplete="off" aria-label="Search components" />
+                <kbd>/</kbd>
+              </div>
+              <label class="select-control select-control--brand">
+                <span class="sr-only">Filter parts by brand</span>
+                <select id="brandFilter">
+                  <option value="All">ALL BRANDS</option>
+                  <option value="AMD">AMD</option>
+                  <option value="Intel">INTEL</option>
+                  <option value="NVIDIA">NVIDIA</option>
+                  <option value="ASUS">ASUS</option>
+                  <option value="Corsair">CORSAIR</option>
+                  <option value="NZXT">NZXT</option>
+                  <option value="Samsung">SAMSUNG</option>
+                  <option value="G.Skill">G.SKILL</option>
+                  <option value="Lian Li">LIAN LI</option>
+                </select>
+                <svg class="icon"><use href="#i-chevron-down"></use></svg>
+              </label>
+              <label class="select-control select-control--sort">
+                <span class="sr-only">Sort components</span>
+                <select id="partSort">
+                  <option value="featured">FEATURED</option>
+                  <option value="price-asc">PRICE: LOW</option>
+                  <option value="price-desc">PRICE: HIGH</option>
+                </select>
+                <svg class="icon"><use href="#i-chevron-down"></use></svg>
+              </label>
+              <div class="parts-status">
+                <span class="status-dot"></span>
+                <span><b id="selectedPartCount">8</b>/8 SLOTS</span>
+              </div>
+            </div>
+
+            <div class="builder-tip">
+              <svg class="icon"><use href="#i-bolt"></use></svg>
+              <p><strong>SMART COMPAT IS ON.</strong> Swap any component to see socket, clearance and power validation in real time.</p>
+              <button type="button" id="closeTip" aria-label="Dismiss tip"><svg class="icon"><use href="#i-x"></use></svg></button>
+            </div>
+
+            <div class="parts-accordion" id="partsAccordion"></div>
+
+            <div class="builder-footnote">
+              <span><svg class="icon"><use href="#i-shield"></use></svg> 2-YEAR COVER</span>
+              <span><svg class="icon"><use href="#i-truck"></use></svg> FREE 48H SHIP</span>
+              <span><svg class="icon"><use href="#i-cpu"></use></svg> BENCH-TESTED</span>
+            </div>
+          </div>
+
+          <aside class="build-hud" id="buildHud" aria-label="Build summary">
+            <div class="build-hud__corner build-hud__corner--tl" aria-hidden="true"></div>
+            <div class="build-hud__corner build-hud__corner--tr" aria-hidden="true"></div>
+            <div class="build-hud__corner build-hud__corner--bl" aria-hidden="true"></div>
+            <div class="build-hud__corner build-hud__corner--br" aria-hidden="true"></div>
+            <div class="build-hud__head">
+              <div>
+                <span class="mono-label">BUILD SUMMARY // NG-01</span>
+                <h3 id="buildCodename">APEX // <span>1440P</span></h3>
+              </div>
+              <span class="live-badge"><i class="status-dot"></i> LIVE</span>
+            </div>
+
+            <div class="rig-visual" id="rigVisual">
+              <div class="rig-visual__glass">
+                <span class="rig-part rig-part--fan rig-fan-1"></span>
+                <span class="rig-part rig-part--fan rig-fan-2"></span>
+                <span class="rig-part rig-part--fan rig-fan-3"></span>
+                <span class="rig-part rig-part--gpu" id="rigGpu"><i></i><i></i><b></b></span>
+                <span class="rig-part rig-part--cpu" id="rigCpu"><i></i><b></b></span>
+                <span class="rig-part rig-part--ram rig-ram-1" id="rigRam1"></span>
+                <span class="rig-part rig-part--ram rig-ram-2" id="rigRam2"></span>
+                <span class="rig-part rig-part--psu" id="rigPsu"><i></i><b></b></span>
+                <span class="rig-visual__brand">NEO <em>//</em> FORGE</span>
+                <span class="rig-visual__coords">X:04.822 Y:11.097</span>
+              </div>
+              <div class="rig-visual__glow" aria-hidden="true"></div>
+            </div>
+
+            <div class="hud-stack">
+              <div class="hud-block compatibility" id="compatBlock">
+                <div class="hud-block__head">
+                  <span class="mono-label">COMPATIBILITY</span>
+                  <span class="hud-value" id="compatLabel">100% COMPATIBLE</span>
+                </div>
+                <div class="compat-bar" id="compatBar"><i></i></div>
+                <div class="compat-messages" id="compatMessages"></div>
+              </div>
+
+              <div class="hud-duo">
+                <div class="hud-block power-block">
+                  <div class="hud-block__head"><span class="mono-label">SYSTEM DRAW</span><span class="hud-value" id="powerValue">808W</span></div>
+                  <div class="power-gauge">
+                    <div class="power-gauge__track"><i id="powerFill" style="width:67%"></i><span class="power-gauge__ticks"></span></div>
+                    <div class="power-gauge__meta"><span>EST. <b id="powerEstimate">808W</b></span><span>REC. <b id="powerRecommended">1050W</b></span></div>
+                  </div>
+                  <p class="hud-note" id="powerNote"><svg class="icon"><use href="#i-check"></use></svg> 1200W PSU — 392W headroom</p>
+                </div>
+                <div class="hud-block thermal-block">
+                  <div class="hud-block__head"><span class="mono-label">THERMAL HEADROOM</span><span class="hud-value" id="thermalValue">76%</span></div>
+                  <div class="thermal-ring" id="thermalRing" style="--value:76"><span><b id="thermalRingValue">76</b><small>%</small></span></div>
+                  <p class="hud-note"><i class="status-dot"></i> AIO 360MM ACTIVE</p>
+                </div>
+              </div>
+
+              <div class="hud-block fps-block">
+                <div class="hud-block__head">
+                  <span class="mono-label">LIVE FPS ESTIMATE</span>
+                  <div class="res-toggle" role="group" aria-label="Resolution">
+                    <button type="button" data-res="1080" class="is-active">1080P</button>
+                    <button type="button" data-res="1440">1440P</button>
+                    <button type="button" data-res="2160">4K</button>
+                  </div>
+                </div>
+                <div class="fps-main">
+                  <div class="fps-main__value"><b id="fpsMain">164</b><span>FPS</span></div>
+                  <div class="fps-main__meta">
+                    <span id="fpsGame">CYBERPUNK 2077</span>
+                    <small>ULTRA · <span id="fpsResLabel">1440P</span> · DLSS Q</small>
+                  </div>
+                  <span class="fps-grade" id="fpsGrade">ELITE</span>
+                </div>
+                <div class="fps-bars" id="fpsBars"></div>
+                <p class="hud-note hud-note--muted">Simulated in-engine estimates. Actual FPS varies by title patch and driver.</p>
+              </div>
+
+              <div class="hud-block price-block">
+                <div class="price-line"><span>LOADOUT (<b id="partCount">8</b> PARTS)</span><strong id="subtotalPrice">$4,219</strong></div>
+                <div class="price-line price-line--discount"><span>FORGE BUNDLE −8%</span><strong id="discountPrice">−$338</strong></div>
+                <div class="price-line price-line--total"><span>TOTAL</span><strong id="totalPrice">$3,881</strong></div>
+                <div class="build-actions">
+                  <button class="btn btn--primary btn--full" id="addRigBtn" type="button"><span>ADD ENTIRE RIG TO CART</span><svg class="icon"><use href="#i-cart"></use></svg></button>
+                  <div class="build-actions__row">
+                    <button class="btn btn--mini" id="saveBuildBtn" type="button"><svg class="icon"><use href="#i-share"></use></svg> SAVE + SHARE</button>
+                    <button class="btn btn--mini" id="exportBuildBtn" type="button"><svg class="icon"><use href="#i-download"></use></svg> EXPORT</button>
+                    <button class="btn btn--mini btn--icon" id="printBuildBtn" type="button" aria-label="Print or save part list as PDF" title="Print / Save PDF"><svg class="icon"><use href="#i-copy"></use></svg></button>
+                    <button class="btn btn--mini btn--icon" id="resetBuildBtn" type="button" aria-label="Reset build" title="Reset build"><svg class="icon"><use href="#i-refresh"></use></svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section drop-section" id="drops">
+      <div class="container">
+        <div class="drop-banner">
+          <div class="drop-banner__grid" aria-hidden="true"></div>
+          <div class="drop-banner__glow" aria-hidden="true"></div>
+          <div class="drop-banner__copy">
+            <div class="eyebrow"><span class="eyebrow__line"></span><span>04 // FLASH DROP</span><span class="eyebrow__chip eyebrow__chip--pink" id="dropStatusChip"><i class="live-pip"></i> LIVE</span></div>
+            <h2><span id="dropHeadingTop">THE FRAME</span><br /><span class="text-gradient text-gradient--pink" id="dropHeadingBottom">IS YOURS.</span></h2>
+            <p id="dropDescription">One crate. 48 hours. The RTX 5090 Nebula Edition with a full custom loop, ready to obliterate 4K. When the bar hits 100%, it's gone for good.</p>
+            <div class="drop-actions">
+              <button class="btn btn--pink btn--lg" id="unlockDealBtn" type="button"><span id="dropCtaText">UNLOCK DEAL</span><svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+              <button class="link-btn link-btn--light" id="dropRulesBtn" type="button">DROP RULES <svg class="icon"><use href="#i-arrow-up-right"></use></svg></button>
+            </div>
+          </div>
+
+          <div class="drop-crate">
+            <div class="drop-crate__hud"><span id="dropCode">CRATE // NG-5090</span><span class="drop-crate__hud-right"><i class="status-dot"></i> LOCKED IN</span></div>
+            <div class="drop-crate__art" id="dropArt"></div>
+            <div class="drop-crate__info">
+              <div>
+                <span class="mono-label" id="dropEdition">NEBULA SERIES // 001</span>
+                <h3 id="dropProductName">RTX 5090 <span>NEBULA</span></h3>
+              </div>
+              <div class="drop-price"><del id="dropCompare">$4,899</del><strong id="dropPrice">$3,899</strong><span id="dropSave">SAVE $1,000</span></div>
+            </div>
+            <div class="drop-progress">
+              <div class="drop-progress__meta"><span><b id="dropClaimed">84%</b> CLAIMED</span><span><b id="dropRemaining">16%</b> REMAINING</span></div>
+              <div class="drop-progress__track"><i id="dropProgressFill" style="width:84%"><span></span></i></div>
+              <p><svg class="icon"><use href="#i-flame"></use></svg> <span id="dropViewers">38</span> operators viewing this drop</p>
+            </div>
+            <div class="countdown" aria-label="Time remaining">
+              <div class="countdown__block"><strong id="cdHours">07</strong><small>HRS</small></div>
+              <span>:</span>
+              <div class="countdown__block"><strong id="cdMinutes">42</strong><small>MIN</small></div>
+              <span>:</span>
+              <div class="countdown__block"><strong id="cdSeconds">18</strong><small>SEC</small></div>
+              <span class="countdown__label">UNTIL<br />CRATE CLOSES</span>
+            </div>
+          </div>
+          <div class="drop-banner__corner">48H<br /><span>WINDOW</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section support-section" id="support">
+      <div class="container support-grid">
+        <div class="support-intro">
+          <div class="eyebrow"><span class="eyebrow__line"></span><span>05 // OPERATOR SUPPORT</span></div>
+          <h2 class="section-title">NO PLAYER<br /><span class="text-gradient">LEFT BEHIND.</span></h2>
+          <p>Real operators. Real answers. Average response time: 3 minutes, 42 seconds. No bots in this comms channel.</p>
+          <a class="link-btn" id="supportMailLink" href="mailto:support@neogaming.gg">OPEN COMMS CHANNEL <svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
+        </div>
+        <div class="support-cards">
+          <button class="support-card" type="button" data-support="Bench check">
+            <span class="support-card__icon"><svg class="icon"><use href="#i-cpu"></use></svg></span>
+            <span><strong>BENCH CHECK</strong><small>Is this rig right for my games?</small></span>
+            <svg class="icon support-card__arrow"><use href="#i-arrow-up-right"></use></svg>
+          </button>
+          <button class="support-card" type="button" data-support="Build help">
+            <span class="support-card__icon"><svg class="icon"><use href="#i-wrench"></use></svg></span>
+            <span><strong>BUILD HELP</strong><small>Compatibility, cables, clearance.</small></span>
+            <svg class="icon support-card__arrow"><use href="#i-arrow-up-right"></use></svg>
+          </button>
+          <button class="support-card" type="button" data-support="Order tracking">
+            <span class="support-card__icon"><svg class="icon"><use href="#i-truck"></use></svg></span>
+            <span><strong>ORDER TRACKING</strong><small>Where is my drop?</small></span>
+            <svg class="icon support-card__arrow"><use href="#i-arrow-up-right"></use></svg>
+          </button>
+          <button class="support-card" type="button" data-support="Warranty claim">
+            <span class="support-card__icon"><svg class="icon"><use href="#i-shield"></use></svg></span>
+            <span><strong>WARRANTY CLAIM</strong><small>2-year cover, no dead pixels.</small></span>
+            <svg class="icon support-card__arrow"><use href="#i-arrow-up-right"></use></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="newsletter-panel">
+        <div class="newsletter-panel__grid" aria-hidden="true"></div>
+        <div class="newsletter-panel__copy">
+          <div class="eyebrow eyebrow--light"><span class="eyebrow__line"></span><span>JOIN THE RESISTANCE</span></div>
+          <h2>GET THE DROP<br /><span>BEFORE IT EXISTS.</span></h2>
+          <p>Member-only restocks, early access to limited runs, and one genuinely useful dispatch per week. No filler.</p>
+          <div class="newsletter-perks">
+            <span><svg class="icon"><use href="#i-check"></use></svg> EARLY DROPS</span>
+            <span><svg class="icon"><use href="#i-check"></use></svg> +5% LOOT</span>
+            <span><svg class="icon"><use href="#i-check"></use></svg> ZERO SPAM</span>
+          </div>
+        </div>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <label class="newsletter-field">
+            <span class="mono-label">OPERATOR EMAIL</span>
+            <span class="newsletter-field__control">
+              <svg class="icon"><use href="#i-mail"></use></svg>
+              <input type="email" id="newsletterEmail" name="email" placeholder="you@somewhere.gg" autocomplete="email" required />
+              <button class="newsletter-submit" type="submit" aria-label="Join the Resistance"><svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+            </span>
+          </label>
+          <label class="consent"><input type="checkbox" id="newsletterConsent" checked /> <span>I accept the transmission. Unsubscribe anytime.</span></label>
+          <p class="form-message" id="newsletterMessage" role="status"></p>
+          <div class="newsletter-meta"><span><i class="status-dot"></i> <span id="subscriberCount">48,219</span> OPERATORS CONNECTED</span><span>ENCRYPTED // AES-256</span></div>
+        </form>
+      </div>
+
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand brand--footer brand--neo" href="#top" aria-label="Neo Gaming home">
+            <span class="brand__logo-wrap">
+              <img class="brand__logo brand__logo--dark" src="assets/neo-logo.png" alt="" />
+              <img class="brand__logo brand__logo--light" src="assets/neo-logo-light.png" alt="" />
+              <i class="brand__status" aria-hidden="true"></i>
+            </span>
+          </a>
+          <p>Elite hardware for players who refuse to lag. Built, benched and dispatched from Sector 7.</p>
+          <div class="socials">
+            <a href="#" class="social" aria-label="Discord"><svg class="icon"><use href="#i-discord"></use></svg></a>
+            <a href="#" class="social" aria-label="Twitch"><svg class="icon"><use href="#i-twitch"></use></svg></a>
+            <a href="#" class="social" aria-label="YouTube"><svg class="icon"><use href="#i-youtube"></use></svg></a>
+            <a href="#" class="social" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"></use></svg></a>
+            <a href="#" class="social" aria-label="X"><svg class="icon"><use href="#i-x-social"></use></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Shop">
+          <h4>ARMORY</h4>
+          <a href="#shop" data-filter-link="Laptops">Gaming Laptops</a>
+          <a href="#shop" data-filter-link="Consoles">Consoles</a>
+          <a href="#shop" data-filter-link="Components">Components</a>
+          <a href="#shop" data-filter-link="Peripherals">Peripherals</a>
+          <a href="#shop" data-filter-link="VR &amp; Streaming">VR &amp; Streaming</a>
+          <a href="#builder" data-scroll="builder">Rig Forge</a>
+        </nav>
+
+        <nav class="footer-links" aria-label="Support">
+          <h4>COMMS</h4>
+          <a href="#support" data-scroll="support">Support Terminal</a>
+          <a href="#" data-legal="Shipping">Shipping &amp; Drops</a>
+          <a href="#" data-legal="Returns">Returns Protocol</a>
+          <a href="#" data-legal="Warranty">Warranty Cover</a>
+          <a href="#" data-legal="Financing">Financing</a>
+          <a href="#" data-legal="Contact">Contact</a>
+        </nav>
+
+        <nav class="footer-links" aria-label="Company">
+          <h4>RESISTANCE</h4>
+          <a href="#" data-legal="Story">Our Story</a>
+          <a href="#" data-legal="Careers">Careers</a>
+          <a href="#" data-legal="Press">Press Kit</a>
+          <a href="#" data-legal="Affiliates">Affiliates</a>
+          <a href="#" data-legal="Privacy">Privacy</a>
+          <a href="#" data-legal="Terms">Terms</a>
+        </nav>
+
+        <div class="footer-status">
+          <div class="system-status"><i class="status-dot"></i><span>ALL SYSTEMS<br /><b>OPERATIONAL</b></span><span class="system-status__pct">99.99%</span></div>
+          <div class="footer-status__rows">
+            <span>ORDERS <b>ONLINE</b></span>
+            <span>SUPPORT <b>ONLINE</b></span>
+            <span>DROPS <b>LIVE</b></span>
+          </div>
+          <div class="payments" aria-label="Accepted payment methods">
+            <span class="pay pay--visa">VISA</span>
+            <span class="pay">MC</span>
+            <span class="pay pay--amex">AMEX</span>
+            <span class="pay pay--gpay">G PAY</span>
+            <span class="pay pay--apple">APPLE PAY</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-wordmark" aria-hidden="true">NEO GAMING</div>
+
+      <div class="footer-bottom">
+        <span>© 2026 NEO GAMING. ALL RIGHTS RESERVED.</span>
+        <span><a class="footer-admin-link" href="admin.html">ADMIN CONSOLE</a> &nbsp;//&nbsp; DESIGNED IN THE VOID // ASSEMBLED IN SECTOR 7</span>
+        <button class="back-top" id="backTop" type="button">BACK TO TOP <svg class="icon"><use href="#i-arrow-up-right"></use></svg></button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="overlay search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="search"></div>
+    <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-panel__head">
+        <span id="searchTitle" class="mono-label">ARMORY QUERY // CTRL+K</span>
+        <button class="icon-btn" type="button" data-close="search" aria-label="Close search"><svg class="icon"><use href="#i-x"></use></svg></button>
+      </div>
+      <div class="search-panel__field">
+        <svg class="icon"><use href="#i-search"></use></svg>
+        <input id="searchInput" type="search" placeholder="Search laptops, GPUs, consoles…" autocomplete="off" aria-controls="searchResults" aria-expanded="true" />
+        <kbd>ESC</kbd>
+      </div>
+      <div class="search-suggest" id="searchSuggest">
+        <span>TRENDING:</span>
+        <button type="button" data-query="RTX 5090">RTX 5090</button>
+        <button type="button" data-query="PS5 Pro">PS5 Pro</button>
+        <button type="button" data-query="OLED">OLED</button>
+        <button type="button" data-query="Razer">Razer</button>
+      </div>
+      <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
+      <div class="search-panel__foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> NAVIGATE</span>
+        <span><kbd>↵</kbd> SELECT</span>
+        <span><kbd>ESC</kbd> CLOSE</span>
+        <span class="search-panel__foot-right">POWERED BY NEO INDEX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="overlay cart-overlay" id="cartDrawer" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="cart"></div>
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-drawer__head">
+        <div>
+          <span class="mono-label">LOADOUT // ACTIVE CART</span>
+          <h2 id="cartTitle">YOUR <span>ARSENAL</span></h2>
+        </div>
+        <button class="icon-btn" type="button" data-close="cart" aria-label="Close cart"><svg class="icon"><use href="#i-x"></use></svg></button>
+      </div>
+
+      <div class="shipping-meter" id="shippingMeter">
+        <div class="shipping-meter__copy"><span id="shippingMessage">You're <b>$99.00</b> from free express shipping</span><span><svg class="icon"><use href="#i-truck"></use></svg></span></div>
+        <div class="shipping-meter__track"><i id="shippingFill" style="width:0%"></i></div>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="cart-empty" id="cartEmpty" hidden>
+        <div class="cart-empty__orb"><svg class="icon"><use href="#i-cart"></use></svg></div>
+        <h3>YOUR ARSENAL IS EMPTY</h3>
+        <p>No gear. No glory. Let's fix that.</p>
+        <button class="btn btn--primary" type="button" data-close="cart" id="emptyShopBtn">DEPLOY TO ARMORY <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      </div>
+
+      <div class="cart-summary" id="cartSummary">
+        <div class="promo-row">
+          <label>
+            <svg class="icon"><use href="#i-bolt"></use></svg>
+            <input id="promoInput" type="text" placeholder="PROMO / LOOT CODE" aria-label="Promo code" />
+          </label>
+          <button class="btn btn--mini" id="applyPromo" type="button">APPLY</button>
+        </div>
+        <p class="promo-message" id="promoMessage" role="status"></p>
+        <div class="cart-lines">
+          <div><span>SUBTOTAL</span><strong id="cartSubtotal">$0.00</strong></div>
+          <div id="discountLine" hidden><span>DISCOUNT <small id="promoTag"></small></span><strong id="cartDiscount">−$0.00</strong></div>
+          <div><span>SHIPPING</span><strong id="cartShipping">—</strong></div>
+          <div class="cart-total"><span>TOTAL</span><strong id="cartGrandTotal">$0.00</strong></div>
+        </div>
+        <button class="btn btn--primary btn--full btn--checkout" id="checkoutBtn" type="button"><span>SECURE CHECKOUT</span><svg class="icon"><use href="#i-lock"></use></svg></button>
+        <div class="cart-assurances">
+          <span><svg class="icon"><use href="#i-shield"></use></svg> 2-YEAR COVER</span>
+          <span><svg class="icon"><use href="#i-refresh"></use></svg> 30-DAY RETURNS</span>
+          <span><svg class="icon"><use href="#i-lock"></use></svg> SECURE</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- PRODUCT QUICK VIEW -->
+  <div class="overlay modal-overlay" id="productModal" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="product"></div>
+    <div class="modal product-modal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+      <button class="icon-btn modal__close" type="button" data-close="product" aria-label="Close product view"><svg class="icon"><use href="#i-x"></use></svg></button>
+      <div class="product-modal__art" id="productModalArt"></div>
+      <div class="product-modal__body">
+        <span class="mono-label" id="productModalCategory">LAPTOPS // NG-001</span>
+        <h2 id="productModalTitle">PRODUCT</h2>
+        <div class="product-modal__rating" id="productModalRating"></div>
+        <p id="productModalDesc"></p>
+        <div class="spec-pills" id="productModalSpecs"></div>
+        <div class="product-modal__stock" id="productModalStock"></div>
+        <div class="product-modal__price">
+          <div><del id="productModalWas"></del><strong id="productModalPrice"></strong><span id="productModalSave"></span></div>
+          <div class="qty-control" aria-label="Quantity">
+            <button type="button" id="modalQtyMinus" aria-label="Decrease quantity"><svg class="icon"><use href="#i-minus"></use></svg></button>
+            <span id="modalQty">1</span>
+            <button type="button" id="modalQtyPlus" aria-label="Increase quantity"><svg class="icon"><use href="#i-plus"></use></svg></button>
+          </div>
+        </div>
+        <button class="btn btn--primary btn--full" id="modalAddBtn" type="button"><span>ADD TO LOADOUT</span><svg class="icon"><use href="#i-cart"></use></svg></button>
+        <div class="product-modal__meta">
+          <span><svg class="icon"><use href="#i-truck"></use></svg> Ships next business day</span>
+          <span><svg class="icon"><use href="#i-shield"></use></svg> 2-year zero-dead-pixel cover</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE MODAL -->
+  <div class="overlay modal-overlay" id="profileModal" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="profile"></div>
+    <div class="modal profile-modal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+      <button class="icon-btn modal__close" type="button" data-close="profile" aria-label="Close profile portal"><svg class="icon"><use href="#i-x"></use></svg></button>
+      <div class="profile-modal__side">
+        <div class="profile-ring" aria-hidden="true"><span>N</span></div>
+        <span class="mono-label">RESISTANCE ACCESS</span>
+        <h2>OPERATOR<br /><span>PORTAL.</span></h2>
+        <p>Track drops, save builds, and unlock member-only loot.</p>
+        <ul class="profile-perks">
+          <li><svg class="icon"><use href="#i-check"></use></svg> Early access to every drop</li>
+          <li><svg class="icon"><use href="#i-check"></use></svg> Saved rigs across devices</li>
+          <li><svg class="icon"><use href="#i-check"></use></svg> +5% loot on every order</li>
+        </ul>
+        <div class="profile-level"><span>LEVEL 07</span><div><i style="width:72%"></i></div><small>2,840 XP</small></div>
+      </div>
+      <div class="profile-modal__form">
+        <div class="portal-tabs" role="tablist" aria-label="Account access">
+          <button class="is-active" type="button" role="tab" aria-selected="true" data-portal="login">SIGN IN</button>
+          <button type="button" role="tab" aria-selected="false" data-portal="register">ENLIST</button>
+        </div>
+        <span class="mono-label" id="profileTitle">ACCESS TERMINAL // SECURE</span>
+        <form id="loginForm" novalidate>
+          <label class="field-label">OPERATOR EMAIL
+            <span class="field-control"><svg class="icon"><use href="#i-mail"></use></svg><input type="email" id="loginEmail" placeholder="you@somewhere.gg" required autocomplete="email" /></span>
+          </label>
+          <label class="field-label">PASSCODE
+            <span class="field-control"><svg class="icon"><use href="#i-lock"></use></svg><input type="password" id="loginPassword" placeholder="Enter secure passcode" required autocomplete="current-password" /><button type="button" class="field-reveal" aria-label="Show password">SHOW</button></span>
+          </label>
+          <div class="form-row">
+            <label class="consent"><input type="checkbox" /> <span>KEEP ME CONNECTED</span></label>
+            <button class="link-btn link-btn--small" type="button" data-forgot>FORGOT PASSCODE?</button>
+          </div>
+          <button class="btn btn--primary btn--full" type="submit"><span>ENTER THE RESISTANCE</span><svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+          <p class="form-error" id="loginError" role="alert"></p>
+        </form>
+        <div class="portal-divider"><span>OR CONNECT VIA</span></div>
+        <div class="portal-socials">
+          <button type="button" data-portal-social="Discord"><svg class="icon"><use href="#i-discord"></use></svg> DISCORD</button>
+          <button type="button" data-portal-social="Google"><svg class="icon"><use href="#i-user"></use></svg> GOOGLE</button>
+        </div>
+        <p class="profile-legal">By entering you accept the <a href="#">Resistance Protocol</a> and <a href="#">Privacy Directive</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOOT MODAL -->
+  <div class="overlay modal-overlay" id="lootModal" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="loot"></div>
+    <div class="modal loot-modal" role="dialog" aria-modal="true" aria-labelledby="lootTitle">
+      <button class="icon-btn modal__close" type="button" data-close="loot" aria-label="Close daily loot"><svg class="icon"><use href="#i-x"></use></svg></button>
+      <span class="mono-label">DAILY LOOT // CRATE 01</span>
+      <div class="loot-crate" id="lootCrate" aria-hidden="true">
+        <div class="loot-crate__lid"></div>
+        <div class="loot-crate__body"><span>N</span><i></i><i></i><i></i></div>
+        <div class="loot-crate__beam"></div>
+      </div>
+      <h2 id="lootTitle">YOUR DROP IS<br /><span>READY TO OPEN.</span></h2>
+      <p id="lootCopy">One crate per 24 hours. Inside: a stackable 20% loot code for your next order.</p>
+      <div class="loot-reward" id="lootReward" hidden><span>REWARD UNLOCKED</span><strong>NEO-DAILY-20</strong><small>20% OFF · STACKABLE · EXPIRES IN 24H</small></div>
+      <button class="btn btn--pink btn--full btn--lg" id="claimLootBtn" type="button"><span>OPEN THE CRATE</span><svg class="icon"><use href="#i-sparkles"></use></svg></button>
+      <p class="loot-timer" id="lootTimer"><span class="status-dot"></span> NEXT CRATE AVAILABLE IN 23:59:59</p>
+    </div>
+  </div>
+
+  <!-- INFO MODAL (support / legal / drop rules) -->
+  <div class="overlay modal-overlay" id="infoModal" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="info"></div>
+    <div class="modal info-modal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+      <button class="icon-btn modal__close" type="button" data-close="info" aria-label="Close"><svg class="icon"><use href="#i-x"></use></svg></button>
+      <span class="mono-label" id="infoKicker">NEO // TERMINAL</span>
+      <h2 id="infoTitle">INFO</h2>
+      <div class="info-modal__body" id="infoBody"></div>
+      <button class="btn btn--primary btn--full" type="button" data-close="info">CLOSE CHANNEL</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT SUCCESS -->
+  <div class="overlay modal-overlay" id="successModal" aria-hidden="true">
+    <div class="overlay__backdrop" data-close="success"></div>
+    <div class="modal success-modal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <span class="success-modal__icon"><svg class="icon"><use href="#i-check"></use></svg></span>
+      <span class="mono-label">TRANSACTION VERIFIED</span>
+      <h2 id="successTitle">DEPLOYMENT<br /><span>CONFIRMED.</span></h2>
+      <p>Your loadout is locked in. A dispatch confirmation is on its way to your inbox. Watch the skies.</p>
+      <div class="success-code"><span>ORDER REF</span><strong id="orderRef">NG-000000</strong></div>
+      <button class="btn btn--primary btn--full" type="button" data-close="success">RETURN TO COMMAND</button>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+  <script src="data.js" defer></script>
+  <script src="store-data.js" defer></script>
+  <script src="art.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

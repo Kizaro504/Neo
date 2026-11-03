@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#050806" />
+  <title>NEO GAMING // Command Console</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-ambient" aria-hidden="true">
+    <div class="admin-ambient__mesh"></div>
+    <div class="admin-ambient__grid"></div>
+    <div class="admin-ambient__scan"></div>
+  </div>
+
+  <svg class="admin-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="a-dashboard" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></symbol>
+    <symbol id="a-box" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"></path><path d="m3 7 9 5 9-5M12 12v10"></path></symbol>
+    <symbol id="a-orders" viewBox="0 0 24 24"><path d="M6 2h12l2 4v15l-3-2-3 2-3-2-3 2-2-2z"></path><path d="M9 8h6M9 12h6M9 16h4"></path></symbol>
+    <symbol id="a-truck" viewBox="0 0 24 24"><path d="M1 5h14v12H1zM15 9h4l4 4v4h-8"></path><circle cx="6" cy="19" r="2"></circle><circle cx="18" cy="19" r="2"></circle></symbol>
+    <symbol id="a-inventory" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 8h10M7 12h10M7 16h6"></path></symbol>
+    <symbol id="a-drop" viewBox="0 0 24 24"><path d="M12 2c3 5 7 8 7 13a7 7 0 0 1-14 0c0-5 4-8 7-13Z"></path><path d="M9 15c0 2 1.4 3.5 3.5 3.5"></path></symbol>
+    <symbol id="a-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5a3.5 3.5 0 0 1 0 7M18.5 14.5A6 6 0 0 1 22 20"></path></symbol>
+    <symbol id="a-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-2.6V20a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H6v-2.6h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V4h2.6v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v2.6H20a1.7 1.7 0 0 0-1.6 1Z"></path></symbol>
+    <symbol id="a-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></symbol>
+    <symbol id="a-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"></path></symbol>
+    <symbol id="a-x" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"></path></symbol>
+    <symbol id="a-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+    <symbol id="a-edit" viewBox="0 0 24 24"><path d="m4 20 4.5-1 11-11a2.1 2.1 0 0 0-3-3l-11 11zM14 6l4 4"></path></symbol>
+    <symbol id="a-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6"></path></symbol>
+    <symbol id="a-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"></path><circle cx="12" cy="12" r="2.5"></circle></symbol>
+    <symbol id="a-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"></path></symbol>
+    <symbol id="a-alert" viewBox="0 0 24 24"><path d="M10.3 3.7 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.7a2 2 0 0 0-3.4 0Z"></path><path d="M12 9v4M12 17h.01"></path></symbol>
+    <symbol id="a-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"></path></symbol>
+    <symbol id="a-external" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"></path></symbol>
+    <symbol id="a-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"></path></symbol>
+    <symbol id="a-dollar" viewBox="0 0 24 24"><path d="M12 2v20M17 6.5c-1-1.3-2.7-2-5-2-2.8 0-5 1.5-5 3.7 0 5.2 10 2.7 10 8 0 2.2-2.2 3.8-5 3.8-2.5 0-4.4-.9-5.5-2.3"></path></symbol>
+    <symbol id="a-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 10.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></symbol>
+    <symbol id="a-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-9"></path><path d="M15 6h6v6"></path></symbol>
+    <symbol id="a-save" viewBox="0 0 24 24"><path d="M5 3h12l4 4v14H3V3z"></path><path d="M8 3v6h8V3M8 21v-7h8v7"></path></symbol>
+    <symbol id="a-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></symbol>
+    <symbol id="a-logout" viewBox="0 0 24 24"><path d="M10 4H4v16h6M15 8l4 4-4 4M9 12h10"></path></symbol>
+    <symbol id="a-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path></symbol>
+    <symbol id="a-store" viewBox="0 0 24 24"><path d="M3 9 5 3h14l2 6M4 9v12h16V9M9 21v-7h6v7"></path></symbol>
+    <symbol id="a-filter" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8z"></path></symbol>
+    <symbol id="a-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V4H4v12h4"></path></symbol>
+    <symbol id="a-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></symbol>
+    <symbol id="a-spark" viewBox="0 0 24 24"><path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8zM5 2l.8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8z"></path></symbol>
+    <symbol id="a-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m3 6 9 7 9-7"></path></symbol>
+  </svg>
+
+  <!-- LOGIN -->
+  <div class="login-gate" id="loginGate">
+    <section class="login-visual">
+      <div class="login-grid" aria-hidden="true"></div>
+      <div class="login-orbit login-orbit--one" aria-hidden="true"></div>
+      <div class="login-orbit login-orbit--two" aria-hidden="true"></div>
+      <header class="login-brand">
+        <img src="assets/neo-logo.png" alt="Neo Gaming" />
+        <span>COMMAND OS <b>2.0</b></span>
+      </header>
+      <div class="login-hero">
+        <div class="admin-eyebrow"><span></span>NEO GAMING // STORE OPERATIONS</div>
+        <h1>RUN THE<br /><em>DROP.</em></h1>
+        <p>One console for catalog, orders, inventory, flash drops and the operators behind them. Built to move at the speed of a restock.</p>
+        <div class="login-stats">
+          <div><strong>10</strong><span>LIVE PRODUCTS</span></div>
+          <div><strong>7</strong><span>ACTIVE ORDERS</span></div>
+          <div><strong>99.99%</strong><span>STORE UPTIME</span></div>
+        </div>
+      </div>
+      <div class="login-footer">
+        <span><i></i> COMMAND LINK SECURE</span>
+        <span>SECTOR 7 // NEO DISTRICT</span>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <form class="login-card" id="adminLoginForm" novalidate>
+        <div class="login-card__top">
+          <span class="admin-eyebrow"><span></span>SECURE ACCESS</span>
+          <span class="login-version">v2.0.26</span>
+        </div>
+        <h2>Welcome back.</h2>
+        <p>Sign in to the Neo Gaming command console.</p>
+
+        <label class="admin-field">
+          <span>ADMIN EMAIL</span>
+          <div class="admin-input-wrap">
+            <svg class="icon"><use href="#a-mail"></use></svg>
+            <input type="email" id="adminEmail" autocomplete="username" placeholder="admin@neogaming.gg" value="admin@neogaming.gg" required />
+          </div>
+        </label>
+
+        <label class="admin-field">
+          <span>PASSCODE</span>
+          <div class="admin-input-wrap">
+            <svg class="icon"><use href="#a-lock"></use></svg>
+            <input type="password" id="adminPassword" autocomplete="current-password" placeholder="Enter command passcode" required />
+            <button type="button" id="passwordReveal">SHOW</button>
+          </div>
+        </label>
+
+        <div class="login-row">
+          <label class="admin-check"><input type="checkbox" id="rememberAdmin" checked /> <span>Keep this console open</span></label>
+          <button type="button" class="text-button" id="forgotAdmin">Need access?</button>
+        </div>
+
+        <p class="admin-error" id="loginError" role="alert"></p>
+        <button class="admin-btn admin-btn--primary admin-btn--wide" type="submit" id="loginSubmit">
+          <span>ENTER CONSOLE</span>
+          <svg class="icon"><use href="#a-arrow"></use></svg>
+        </button>
+
+        <div class="demo-creds">
+          <div>
+            <span>DEMO CREDENTIALS</span>
+            <code>admin@neogaming.gg</code>
+            <code>NEO-ADMIN-2026</code>
+          </div>
+          <button type="button" id="demoFill">PREFILL</button>
+        </div>
+
+        <a class="back-store" href="index.html"><span>←</span> BACK TO STOREFRONT</a>
+        <p class="login-note">Demo access is client-side only. Connect server-side authentication before deploying this console publicly.</p>
+      </form>
+    </section>
+  </div>
+
+  <!-- ADMIN APP -->
+  <div class="admin-app" id="adminApp" hidden>
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <img src="assets/neo-logo.png" alt="Neo Gaming" />
+        <button class="icon-button sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><svg class="icon"><use href="#a-x"></use></svg></button>
+      </div>
+      <div class="sidebar-store">
+        <div class="avatar avatar--store">NG</div>
+        <div><span>STORE</span><strong>Neo Gaming</strong><small>COMMAND OS // ONLINE</small></div>
+        <span class="online-dot" aria-label="Online"></span>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Admin sections">
+        <span class="sidebar-label">OPERATIONS</span>
+        <button class="side-link is-active" type="button" data-view="dashboard"><svg class="icon"><use href="#a-dashboard"></use></svg><span>Dashboard</span></button>
+        <button class="side-link" type="button" data-view="products"><svg class="icon"><use href="#a-box"></use></svg><span>Products</span><b data-count="products">10</b></button>
+        <button class="side-link" type="button" data-view="orders"><svg class="icon"><use href="#a-orders"></use></svg><span>Orders</span><b data-count="orders">0</b></button>
+        <button class="side-link" type="button" data-view="inventory"><svg class="icon"><use href="#a-inventory"></use></svg><span>Inventory</span><b data-count="lowstock">0</b></button>
+
+        <span class="sidebar-label">GROWTH</span>
+        <button class="side-link" type="button" data-view="drops"><svg class="icon"><use href="#a-drop"></use></svg><span>Loot Drop</span><i class="side-live"></i></button>
+        <button class="side-link" type="button" data-view="customers"><svg class="icon"><use href="#a-users"></use></svg><span>Customers</span></button>
+
+        <span class="sidebar-label">SYSTEM</span>
+        <button class="side-link" type="button" data-view="settings"><svg class="icon"><use href="#a-settings"></use></svg><span>Settings</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-status">
+          <div><i class="online-dot"></i><span>ALL SYSTEMS OPERATIONAL</span></div>
+          <small>SYNCED <b id="sidebarSync">JUST NOW</b></small>
+        </div>
+        <a class="side-store-link" href="index.html" target="_blank" rel="noopener"><svg class="icon"><use href="#a-store"></use></svg><span>VIEW STOREFRONT</span><svg class="icon"><use href="#a-external"></use></svg></a>
+        <button class="side-logout" id="logoutBtn" type="button"><svg class="icon"><use href="#a-logout"></use></svg><span>SIGN OUT</span></button>
+      </div>
+    </aside>
+
+    <div class="admin-shell">
+      <header class="admin-topbar">
+        <button class="icon-button sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open navigation"><svg class="icon"><use href="#a-menu"></use></svg></button>
+        <div class="topbar-title">
+          <span id="viewKicker">COMMAND // OVERVIEW</span>
+          <h1 id="viewTitle">Store Overview</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="topbar-date" id="todayLabel"></span>
+          <button class="icon-button topbar-bell" id="notificationsBtn" type="button" aria-label="Notifications">
+            <svg class="icon"><use href="#a-bell"></use></svg>
+            <i id="notifBadge">0</i>
+          </button>
+          <a class="admin-btn admin-btn--ghost topbar-store" href="index.html" target="_blank" rel="noopener"><svg class="icon"><use href="#a-store"></use></svg><span>VIEW STORE</span></a>
+          <div class="admin-user">
+            <div class="avatar">NG</div>
+            <div><strong>Neo Admin</strong><span>STORE OWNER</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <!-- DASHBOARD -->
+        <section class="admin-view is-active" data-view-panel="dashboard">
+          <div class="view-toolbar">
+            <div>
+              <p class="view-subtitle">Mission control for <span id="dashboardStoreName">Neo Gaming</span>. Here is what is moving.</p>
+            </div>
+            <div class="view-actions">
+              <button class="admin-btn admin-btn--ghost" type="button" id="refreshDashboardBtn"><svg class="icon"><use href="#a-trend"></use></svg> REFRESH</button>
+              <button class="admin-btn admin-btn--primary" type="button" data-go-products><svg class="icon"><use href="#a-plus"></use></svg> NEW PRODUCT</button>
+            </div>
+          </div>
+
+          <div class="kpi-grid" id="kpiGrid"></div>
+
+          <div class="dashboard-row">
+            <article class="admin-panel revenue-panel">
+              <header class="panel-head">
+                <div><span class="panel-kicker">PERFORMANCE</span><h2>Revenue</h2></div>
+                <div class="panel-head__right"><span class="chart-total" id="chartTotal">$0</span><span class="panel-tag">LAST 7 DAYS</span></div>
+              </header>
+              <div class="revenue-chart" id="salesChart"></div>
+              <div class="chart-foot">
+                <span><i class="legend-dot"></i> GROSS REVENUE</span>
+                <span id="chartRange">—</span>
+              </div>
+            </article>
+
+            <article class="admin-panel drop-overview">
+              <header class="panel-head">
+                <div><span class="panel-kicker">CAMPAIGN</span><h2>Loot Drop</h2></div>
+                <span class="status-pill status-pill--live" id="dropLiveStatus"><i></i> LIVE</span>
+              </header>
+              <div class="drop-overview__art" id="dropOverviewArt"></div>
+              <div class="drop-overview__copy">
+                <strong id="dropOverviewName">RTX 5090 NEBULA</strong>
+                <span id="dropOverviewPrice">$3,899 <s>$4,899</s></span>
+              </div>
+              <div class="drop-overview__progress">
+                <div><span id="dropOverviewClaimed">84% CLAIMED</span><span id="dropOverviewRemaining">16% LEFT</span></div>
+                <div class="admin-progress"><i id="dropOverviewBar" style="width:84%"></i></div>
+              </div>
+              <div class="drop-overview__foot">
+                <div><span>ENDS IN</span><strong id="dropMiniCountdown">47:30:00</strong></div>
+                <button class="admin-btn admin-btn--mini" type="button" data-view-jump="drops">MANAGE DROP <svg class="icon"><use href="#a-arrow"></use></svg></button>
+              </div>
+            </article>
+          </div>
+
+          <div class="dashboard-row dashboard-row--lower">
+            <article class="admin-panel orders-panel">
+              <header class="panel-head">
+                <div><span class="panel-kicker">FULFILLMENT</span><h2>Recent orders</h2></div>
+                <button class="text-button" type="button" data-view-jump="orders">VIEW ALL <svg class="icon"><use href="#a-arrow"></use></svg></button>
+              </header>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead><tr><th>ORDER</th><th>CUSTOMER</th><th>ITEMS</th><th>STATUS</th><th>TOTAL</th></tr></thead>
+                  <tbody id="recentOrdersBody"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="admin-panel low-stock-panel">
+              <header class="panel-head">
+                <div><span class="panel-kicker">INVENTORY ALERT</span><h2>Low stock</h2></div>
+                <span class="panel-tag panel-tag--warn" id="lowStockCount">0 ITEMS</span>
+              </header>
+              <div class="low-stock-list" id="lowStockList"></div>
+              <button class="admin-panel__foot-link" type="button" data-view-jump="inventory">OPEN INVENTORY <svg class="icon"><use href="#a-arrow"></use></svg></button>
+            </article>
+          </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="admin-view" data-view-panel="products">
+          <div class="view-toolbar">
+            <p class="view-subtitle">Create, price, publish and retire every unit in the armory.</p>
+            <div class="view-actions">
+              <button class="admin-btn admin-btn--primary" type="button" id="addProductBtn"><svg class="icon"><use href="#a-plus"></use></svg> ADD PRODUCT</button>
+            </div>
+          </div>
+          <div class="mini-stats" id="productStats"></div>
+
+          <article class="admin-panel">
+            <div class="table-toolbar">
+              <label class="admin-search"><svg class="icon"><use href="#a-search"></use></svg><input type="search" id="productSearch" placeholder="Search products, brands or specs…" /></label>
+              <label class="admin-select"><select id="productCategoryFilter"><option value="All">ALL CATEGORIES</option><option>Laptops</option><option>Consoles</option><option>Components</option><option>Peripherals</option><option>VR &amp; Streaming</option></select><svg class="icon"><use href="#a-filter"></use></svg></label>
+              <label class="admin-select"><select id="productStatusFilter"><option value="All">ALL STATUS</option><option value="active">ACTIVE</option><option value="inactive">HIDDEN</option><option value="low">LOW STOCK</option><option value="sold">SOLD OUT</option></select><svg class="icon"><use href="#a-filter"></use></svg></label>
+              <span class="toolbar-count" id="productResultCount">0 ITEMS</span>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table admin-table--products">
+                <thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>STOCK</th><th>PRICE</th><th>STATUS</th><th class="align-right">ACTIONS</th></tr></thead>
+                <tbody id="productsBody"></tbody>
+              </table>
+              <div class="admin-empty" id="productsEmpty" hidden>No products match this filter.</div>
+            </div>
+          </article>
+        </section>
+
+        <!-- ORDERS -->
+        <section class="admin-view" data-view-panel="orders">
+          <div class="view-toolbar">
+            <p class="view-subtitle">Track every deployment from payment to dispatch. Update status inline.</p>
+            <div class="view-actions">
+              <button class="admin-btn admin-btn--ghost" type="button" id="exportOrdersBtn"><svg class="icon"><use href="#a-download"></use></svg> EXPORT CSV</button>
+            </div>
+          </div>
+          <div class="mini-stats" id="orderStats"></div>
+          <article class="admin-panel">
+            <div class="table-toolbar">
+              <label class="admin-search"><svg class="icon"><use href="#a-search"></use></svg><input type="search" id="orderSearch" placeholder="Search order ref, customer or email…" /></label>
+              <label class="admin-select"><select id="orderStatusFilter"><option value="All">ALL STATUSES</option><option>Processing</option><option>Packed</option><option>Shipped</option><option>Delivered</option><option>Cancelled</option></select><svg class="icon"><use href="#a-filter"></use></svg></label>
+              <span class="toolbar-count" id="orderResultCount">0 ORDERS</span>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table admin-table--orders">
+                <thead><tr><th>ORDER</th><th>CUSTOMER</th><th>ITEMS</th><th>DATE</th><th>STATUS</th><th>TOTAL</th><th class="align-right">ACTIONS</th></tr></thead>
+                <tbody id="ordersBody"></tbody>
+              </table>
+              <div class="admin-empty" id="ordersEmpty" hidden>No orders in this channel.</div>
+            </div>
+          </article>
+        </section>
+
+        <!-- INVENTORY -->
+        <section class="admin-view" data-view-panel="inventory">
+          <div class="view-toolbar">
+            <p class="view-subtitle">Adjust hardware stock and tune Rig Forge component pricing. Changes go live immediately.</p>
+          </div>
+          <div class="segmented-tabs" role="tablist">
+            <button class="is-active" type="button" data-inv-tab="hardware" role="tab">HARDWARE STOCK</button>
+            <button type="button" data-inv-tab="parts" role="tab">RIG FORGE PARTS</button>
+          </div>
+
+          <article class="admin-panel" id="inventoryHardwarePanel">
+            <div class="table-toolbar">
+              <label class="admin-search"><svg class="icon"><use href="#a-search"></use></svg><input type="search" id="inventorySearch" placeholder="Search hardware inventory…" /></label>
+              <span class="toolbar-count" id="inventoryCount">0 SKUS</span>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table admin-table--inventory">
+                <thead><tr><th>PRODUCT</th><th>SKU / CATEGORY</th><th>ON HAND</th><th>LOW STOCK THRESHOLD</th><th>ADJUST</th></tr></thead>
+                <tbody id="inventoryBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="admin-panel" id="inventoryPartsPanel" hidden>
+            <div class="table-toolbar">
+              <label class="admin-search"><svg class="icon"><use href="#a-search"></use></svg><input type="search" id="partSearchAdmin" placeholder="Search components…" /></label>
+              <label class="admin-select"><select id="partCategoryFilter"><option value="All">ALL COMPONENT CATEGORIES</option></select><svg class="icon"><use href="#a-filter"></use></svg></label>
+              <span class="toolbar-count" id="partsCount">0 PARTS</span>
+            </div>
+            <p class="table-hint">Prices and visibility save on change. Storefront Rig Forge reads the same records.</p>
+            <div class="admin-table-wrap">
+              <table class="admin-table admin-table--parts">
+                <thead><tr><th>COMPONENT</th><th>CATEGORY</th><th>PRICE</th><th>VISIBLE</th><th>STATUS</th></tr></thead>
+                <tbody id="partsBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- DROPS -->
+        <section class="admin-view" data-view-panel="drops">
+          <div class="view-toolbar">
+            <p class="view-subtitle">Control the flash drop headline, crate, countdown and stock pressure.</p>
+            <div class="view-actions">
+              <button class="admin-btn admin-btn--ghost" type="button" id="startDropBtn"><svg class="icon"><use href="#a-spark"></use></svg> START 48H</button>
+              <button class="admin-btn admin-btn--danger" type="button" id="closeDropBtn">CLOSE DROP</button>
+            </div>
+          </div>
+
+          <div class="drop-admin-layout">
+            <form class="admin-panel drop-form" id="dropForm" novalidate>
+              <header class="panel-head"><div><span class="panel-kicker">CAMPAIGN CONFIG</span><h2>Drop details</h2></div><label class="switch-field"><input type="checkbox" id="dropActive" /><span class="switch"></span><em>ACTIVE</em></label></header>
+              <div class="form-grid form-grid--2">
+                <label class="admin-field"><span>HEADLINE — LINE 1</span><input id="dropHeadlineTop" type="text" required /></label>
+                <label class="admin-field"><span>HEADLINE — LINE 2</span><input id="dropHeadlineBottom" type="text" required /></label>
+              </div>
+              <label class="admin-field"><span>DESCRIPTION</span><textarea id="dropDescription" rows="3"></textarea></label>
+              <div class="form-grid form-grid--2">
+                <label class="admin-field"><span>PRODUCT LABEL</span><input id="dropProductShort" type="text" /></label>
+                <label class="admin-field"><span>CTA LABEL</span><input id="dropCtaInput" type="text" /></label>
+                <label class="admin-field"><span>CRATE CODE</span><input id="dropCodeInput" type="text" /></label>
+                <label class="admin-field"><span>EDITION LABEL</span><input id="dropEditionInput" type="text" /></label>
+                <label class="admin-field"><span>DROP PRICE (USD)</span><input id="dropPriceInput" type="number" min="0" step="1" /></label>
+                <label class="admin-field"><span>COMPARE AT (USD)</span><input id="dropCompareInput" type="number" min="0" step="1" /></label>
+                <label class="admin-field"><span>UNITS IN CRATE</span><input id="dropUnitsInput" type="number" min="1" step="1" /></label>
+                <label class="admin-field"><span>WATCHING NOW</span><input id="dropViewersInput" type="number" min="0" step="1" /></label>
+              </div>
+              <label class="admin-field"><span>CLAIMED — <b id="dropClaimedValue">84%</b></span><input id="dropClaimedRange" type="range" min="0" max="100" value="84" /></label>
+              <label class="admin-field"><span>WINDOW ENDS</span><input id="dropEndsAt" type="datetime-local" /></label>
+              <div class="form-actions">
+                <button class="admin-btn admin-btn--primary" type="submit"><svg class="icon"><use href="#a-save"></use></svg> SAVE CAMPAIGN</button>
+              </div>
+            </form>
+
+            <aside class="admin-panel drop-preview-panel">
+              <header class="panel-head"><div><span class="panel-kicker">LIVE PREVIEW</span><h2>Crate card</h2></div><span class="status-pill status-pill--live" id="dropPreviewStatus"><i></i> LIVE</span></header>
+              <div class="drop-preview-art" id="dropPreviewArt"></div>
+              <div class="drop-preview-info">
+                <div><span id="dropPreviewTag">NEBULA SERIES // 001</span><strong id="dropPreviewTitle">RTX 5090 NEBULA</strong></div>
+                <div><strong id="dropPreviewPrice">$3,899</strong><s id="dropPreviewCompare">$4,899</s></div>
+              </div>
+              <div class="drop-preview-progress"><div><span>CLAIMED</span><b id="dropPreviewClaim">84%</b></div><div class="admin-progress"><i id="dropPreviewBar" style="width:84%"></i></div></div>
+              <div class="drop-preview-countdown"><span>WINDOW CLOSES IN</span><strong id="adminDropCountdown">47:30:00</strong><small id="dropPreviewEnd">—</small></div>
+              <p class="preview-note">Storefront countdown, progress, copy, CTA and price use these records.</p>
+            </aside>
+          </div>
+        </section>
+
+        <!-- CUSTOMERS -->
+        <section class="admin-view" data-view-panel="customers">
+          <div class="view-toolbar">
+            <p class="view-subtitle">Operators, subscribers and the people behind every drop.</p>
+            <div class="view-actions">
+              <button class="admin-btn admin-btn--ghost" type="button" id="exportCustomersBtn"><svg class="icon"><use href="#a-download"></use></svg> EXPORT CSV</button>
+            </div>
+          </div>
+          <div class="mini-stats" id="customerStats"></div>
+          <article class="admin-panel">
+            <div class="table-toolbar table-toolbar--wrap">
+              <label class="admin-search"><svg class="icon"><use href="#a-search"></use></svg><input type="search" id="customerSearch" placeholder="Search operators by name or email…" /></label>
+              <form class="inline-add" id="addSubscriberForm">
+                <label class="admin-field admin-field--inline"><span class="sr-only">New subscriber email</span><input type="email" id="subscriberEmail" placeholder="operator@domain.gg" required /></label>
+                <button class="admin-btn admin-btn--mini" type="submit"><svg class="icon"><use href="#a-plus"></use></svg> ADD OPERATOR</button>
+              </form>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table admin-table--customers">
+                <thead><tr><th>OPERATOR</th><th>SOURCE</th><th>ORDERS</th><th>SPEND</th><th>LAST ORDER</th><th>JOINED</th></tr></thead>
+                <tbody id="customersBody"></tbody>
+              </table>
+              <div class="admin-empty" id="customersEmpty" hidden>No operators found.</div>
+            </div>
+          </article>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="admin-view" data-view-panel="settings">
+          <div class="view-toolbar">
+            <p class="view-subtitle">Store identity, shipping logic and promotional loot codes.</p>
+          </div>
+          <div class="settings-grid">
+            <form class="admin-panel" id="storeSettingsForm">
+              <header class="panel-head"><div><span class="panel-kicker">STOREFRONT</span><h2>Store settings</h2></div></header>
+              <div class="form-grid form-grid--2">
+                <label class="admin-field"><span>STORE NAME</span><input id="settingStoreName" type="text" required /></label>
+                <label class="admin-field"><span>SUPPORT EMAIL</span><input id="settingSupportEmail" type="email" required /></label>
+                <label class="admin-field"><span>FREE SHIPPING OVER (USD)</span><input id="settingFreeShipping" type="number" min="0" step="1" /></label>
+                <label class="admin-field"><span>STANDARD SHIPPING (USD)</span><input id="settingStandardShipping" type="number" min="0" step="1" /></label>
+                <label class="admin-field"><span>LOW STOCK THRESHOLD</span><input id="settingLowStock" type="number" min="1" step="1" /></label>
+                <label class="admin-field"><span>STORE THEME</span><input value="Void + Neo Green" disabled /></label>
+              </div>
+              <label class="admin-field"><span>ANNOUNCEMENT TICKER</span><textarea id="settingAnnouncement" rows="2"></textarea></label>
+              <div class="form-actions"><button class="admin-btn admin-btn--primary" type="submit"><svg class="icon"><use href="#a-save"></use></svg> SAVE SETTINGS</button></div>
+            </form>
+
+            <article class="admin-panel">
+              <header class="panel-head"><div><span class="panel-kicker">GROWTH</span><h2>Promo codes</h2></div><span class="panel-tag">LOOT ENGINE</span></header>
+              <form class="promo-form" id="promoForm">
+                <label class="admin-field"><span>CODE</span><input id="promoCode" type="text" placeholder="NEO25" required /></label>
+                <label class="admin-field"><span>DISCOUNT %</span><input id="promoRate" type="number" min="1" max="100" step="1" placeholder="25" required /></label>
+                <label class="admin-field"><span>LABEL</span><input id="promoLabel" type="text" placeholder="Battle Pass Bonus" /></label>
+                <button class="admin-btn admin-btn--mini" type="submit"><svg class="icon"><use href="#a-plus"></use></svg> ADD</button>
+              </form>
+              <div class="promo-list" id="promoList"></div>
+            </article>
+
+            <article class="admin-panel danger-panel">
+              <header class="panel-head"><div><span class="panel-kicker">LOCAL DATA</span><h2>Demo controls</h2></div></header>
+              <p>This console persists to this browser. Resetting restores the seeded Neo Gaming catalog, sample orders and drop configuration.</p>
+              <button class="admin-btn admin-btn--danger" type="button" id="resetDemoBtn"><svg class="icon"><use href="#a-trash"></use></svg> RESET DEMO DATA</button>
+              <div class="admin-session-note"><svg class="icon"><use href="#a-lock"></use></svg><span>Client-side demo session. Add server-side authentication before production.</span></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- PRODUCT DRAWER -->
+  <div class="admin-drawer" id="productDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-product></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="productDrawerTitle">
+      <header class="drawer-head">
+        <div><span class="panel-kicker">CATALOG // EDITOR</span><h2 id="productDrawerTitle">Add product</h2></div>
+        <button class="icon-button" type="button" data-close-product aria-label="Close product editor"><svg class="icon"><use href="#a-x"></use></svg></button>
+      </header>
+      <form class="drawer-body" id="productForm" novalidate>
+        <input type="hidden" id="pId" />
+        <div class="product-form-preview">
+          <div id="productFormArt"></div>
+          <div><span id="productFormCategory">NEW PRODUCT</span><strong id="productFormName">Untitled product</strong><small id="productFormPrice">$0</small></div>
+        </div>
+        <div class="form-grid form-grid--2">
+          <label class="admin-field"><span>PRODUCT NAME *</span><input id="pName" type="text" required /></label>
+          <label class="admin-field"><span>BRAND *</span><input id="pBrand" type="text" required /></label>
+          <label class="admin-field"><span>CATEGORY</span><select id="pCategory"><option>Laptops</option><option>Consoles</option><option>Components</option><option>Peripherals</option><option>VR &amp; Streaming</option></select></label>
+          <label class="admin-field"><span>ARTWORK</span><select id="pArt"><option value="laptop">Gaming laptop</option><option value="laptop-blade">Blade laptop</option><option value="console-ps">PlayStation console</option><option value="console-xbox">Xbox console</option><option value="gpu">Graphics card</option><option value="gpu5080">RTX 5080 card</option><option value="monitor">OLED monitor</option><option value="keyboard">Keyboard</option><option value="headset">Headset</option><option value="vr">VR headset</option></select></label>
+          <label class="admin-field"><span>PRICE (USD) *</span><input id="pPrice" type="number" min="0" step="1" required /></label>
+          <label class="admin-field"><span>COMPARE AT (USD)</span><input id="pWas" type="number" min="0" step="1" /></label>
+          <label class="admin-field"><span>STOCK ON HAND</span><input id="pStock" type="number" min="0" step="1" /></label>
+          <label class="admin-field"><span>RATING (0–5)</span><input id="pRating" type="number" min="0" max="5" step="0.1" /></label>
+          <label class="admin-field"><span>REVIEW COUNT</span><input id="pReviews" type="number" min="0" step="1" /></label>
+          <label class="admin-field"><span>BADGE LABEL</span><input id="pBadge" type="text" placeholder="NEW DROP" /></label>
+          <label class="admin-field"><span>BADGE TONE</span><select id="pBadgeTone"><option value="new">New / cyan</option><option value="discount">Discount / pink</option><option value="limited">Limited / green</option></select></label>
+          <label class="admin-field"><span>ACCENT COLOR</span><div class="color-field"><input id="pAccent" type="color" value="#7bd64f" /><input id="pAccentText" type="text" value="#7bd64f" /></div></label>
+          <label class="admin-field"><span>SECONDARY ACCENT</span><div class="color-field"><input id="pAccent2" type="color" value="#00f0ff" /><input id="pAccent2Text" type="text" value="#00f0ff" /></div></label>
+        </div>
+        <label class="admin-field"><span>SPEC PILLS — COMMA SEPARATED</span><input id="pSpecs" type="text" placeholder="RTX 5090, 240Hz OLED, 64GB DDR5" /></label>
+        <label class="admin-field"><span>DESCRIPTION</span><textarea id="pDescription" rows="4"></textarea></label>
+        <label class="admin-field"><span>SEARCH KEYWORDS</span><input id="pKeywords" type="text" placeholder="rtx 5090, laptop, oled" /></label>
+        <label class="switch-field"><input type="checkbox" id="pActive" checked /><span class="switch"></span><em>PUBLISHED IN STOREFRONT</em></label>
+        <p class="admin-error" id="productFormError" role="alert"></p>
+        <div class="form-actions">
+          <button class="admin-btn admin-btn--ghost" type="button" data-close-product>CANCEL</button>
+          <button class="admin-btn admin-btn--primary" type="submit"><svg class="icon"><use href="#a-save"></use></svg> SAVE PRODUCT</button>
+        </div>
+      </form>
+    </aside>
+  </div>
+
+  <!-- ORDER DRAWER -->
+  <div class="admin-drawer" id="orderDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-order></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="orderDrawerTitle">
+      <header class="drawer-head">
+        <div><span class="panel-kicker">FULFILLMENT // ORDER</span><h2 id="orderDrawerTitle">Order</h2></div>
+        <button class="icon-button" type="button" data-close-order aria-label="Close order"><svg class="icon"><use href="#a-x"></use></svg></button>
+      </header>
+      <div class="drawer-body" id="orderDetailBody"></div>
+    </aside>
+  </div>
+
+  <!-- CONFIRM DIALOG -->
+  <div class="admin-modal" id="confirmDialog" aria-hidden="true">
+    <div class="admin-modal__backdrop" data-close-confirm></div>
+    <div class="admin-modal__panel" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <span class="confirm-icon"><svg class="icon"><use href="#a-alert"></use></svg></span>
+      <h2 id="confirmTitle">Confirm action</h2>
+      <p id="confirmText">This action cannot be undone.</p>
+      <div class="admin-modal__actions">
+        <button class="admin-btn admin-btn--ghost" type="button" data-close-confirm>CANCEL</button>
+        <button class="admin-btn admin-btn--danger" type="button" id="confirmOk">CONFIRM</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-toasts" id="adminToastStack" aria-live="polite"></div>
+
+  <script src="data.js" defer></script>
+  <script src="store-data.js" defer></script>
+  <script src="art.js" defer></script>
+  <script src="admin.js" defer></script>
+</body>
+</html>
